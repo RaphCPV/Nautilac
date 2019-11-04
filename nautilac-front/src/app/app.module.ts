@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { ListePosteComponent } from './liste-poste/liste-poste.component';
+import {MatTableModule} from '@angular/material/table';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { ListePosteComponent } from './liste-poste/liste-poste.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatTableModule
 
   ],
   providers: [],

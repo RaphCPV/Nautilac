@@ -1,8 +1,8 @@
 class Poste {
 
-    protected id: number;
+    public id: number;
 
-    protected adresse: string;
+    public adresse: string;
 
-    protected kilometrage: number;
+    public kilometrage: number;
 }
