@@ -11,6 +11,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { ListePosteComponent } from './liste-poste/liste-poste.component';
 import {MatTableModule} from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import {MatTableModule} from '@angular/material/table';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
 
   ],
   providers: [],

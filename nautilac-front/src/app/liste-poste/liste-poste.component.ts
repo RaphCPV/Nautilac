@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { PostesService } from '../service/postesService.service';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 
@@ -15,21 +16,30 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export class ListePosteComponent implements OnInit {
   
-  postes_data: Poste[] = [
+  public poste_data_service: Poste[];
+
+
+  postesdata: Poste[] = [
     {
       id: 1,
       adresse: '13 rue Brouzoud',
       kilometrage: 2
-    },
-  
+    },  
   ];
-  displayedColumns: string[] = ['position', 'adresse', 'kilometrage', 'actions'];
-  dataSource = this.postes_data;
 
-  constructor() { }
+  displayedColumns: string[] = ['position', 'adresse', 'kilometrage', 'actions'];
+  dataSource = this.poste_data_service; 
+
+  constructor(private postesService: PostesService) { }
 
   ngOnInit() {
+    this.postesService.sendGetRequest().subscribe(
+      postes => this.poste_data_service = postes
+    );
+    
+
   }
+  
 
  
 
