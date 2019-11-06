@@ -9,7 +9,7 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class PostesService {
 
-  private REST_API_SERVER = 'https://localhost:44340';
+  private REST_API_SERVER = 'https://localhost:44340/api';
 
   
   constructor(private httpClient: HttpClient) { }
@@ -30,7 +30,7 @@ export class PostesService {
 
 
   public sendGetRequest(){
-    return this.httpClient.get<Poste[]>(this.REST_API_SERVER)
+    return this.httpClient.get<Poste[]>(this.REST_API_SERVER + '/Postes')
     .pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
