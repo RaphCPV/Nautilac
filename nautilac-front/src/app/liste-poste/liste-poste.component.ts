@@ -18,31 +18,20 @@ export class ListePosteComponent implements OnInit {
   
   public poste_data_service: Poste[];
 
-
-  postesdata: Poste[] = [
-    {
-      id: 1,
-      adresse: '13 rue Brouzoud',
-      kilometrage: 2
-    },  
-  ];
-
-  displayedColumns: string[] = ['position', 'adresse', 'kilometrage', 'actions'];
+  displayedColumns: string[] = ['position', 'adresse', 'kilometrage', 'Benevole','actions'];
   dataSource = this.poste_data_service; 
 
   constructor(private postesService: PostesService) { }
 
   ngOnInit() {
     this.postesService.sendGetRequest().subscribe(
-      postes => this.poste_data_service = postes
+      postes => {
+        this.poste_data_service = postes;
+        console.log(this.poste_data_service.forEach);
+        this.dataSource = this.poste_data_service;
+      }
     );
-    
-
   }
-  
-
- 
-
   public generatePdf() {
     const documentDefinition = { content: 'This is an sample PDF printed with pdfMake' };
     // pdfMake.createPdf(documentDefinition).open();

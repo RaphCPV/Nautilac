@@ -30,7 +30,7 @@ export class PostesService {
 
 
   public sendGetRequest(){
-    return this.httpClient.get<Poste[]>(this.REST_API_SERVER + '/Postes')
+    return this.httpClient.get<Poste[]>('https://localhost:44334/api/Postes')
     .pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
