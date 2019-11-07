@@ -31,6 +31,8 @@ export class ListePosteComponent implements OnInit {
         this.dataSource = this.poste_data_service;
       }
     );
+    console.log(this.poste_data_service);
+
   }
   public generatePdf() {
     const documentDefinition = { content: 'This is an sample PDF printed with pdfMake' };

@@ -27,7 +27,13 @@
      <!-- Benevole  Column -->
      <ng-container matColumnDef="Benevole">
       <th mat-header-cell *matHeaderCellDef> Benevole </th>
-      <td mat-cell *matCellDef="let poste"> {{poste.Benevoles}} </td>
+      <td mat-cell *matCellDef="let poste"> <li *ngFor="let benevole of poste.Benevoles">
+                                              <span>{{ benevole.nom }}  </span>
+                                              <span>{{ benevole.prenom }}  </span>
+                                              <span>{{ benevole.jour }}  </span>
+                                            </li>
+                                            </td>
+
     </ng-container>
   
   <!-- Edit Columln-->
