@@ -1,27 +1,33 @@
 <button mat-raised-button class="ajout"
 (click)="ajouterBenevole()">Ajouter un bénévole <mat-icon aria-hidden="false" aria-label="Ajouter">person_add</mat-icon></button>
 
+<br/>
+
+<mat-form-field class="filtrage">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrer">
+</mat-form-field>
+
 <div class="tableau">
     <table mat-table  matSort [dataSource]="dataSource" class="mat-elevation-z8">
 
     
         <ng-container matColumnDef="prenom">
-        <th mat-header-cell *matHeaderCellDef> Prenom </th>
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> Prenom </th>
         <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
         </ng-container>
     
         <ng-container matColumnDef="nom">
-        <th mat-header-cell *matHeaderCellDef> Nom </th>
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> Nom </th>
         <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
         </ng-container>
     
         <ng-container matColumnDef="telephone">
-        <th mat-header-cell *matHeaderCellDef> N° Téléphone </th>
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> N° Téléphone </th>
         <td mat-cell *matCellDef="let element"> {{element.telephone}} </td>
         </ng-container>
     
         <ng-container matColumnDef="mail">
-        <th mat-header-cell *matHeaderCellDef> Mail </th>
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> Mail </th>
         <td mat-cell *matCellDef="let element"> {{element.mail}} </td>
         </ng-container>
     
@@ -33,7 +39,7 @@
                 <mat-icon aria-hidden="false" aria-label="PDF">picture_as_pdf</mat-icon>
             </button>
             
-            <button mat-button (click)="ajouterBenevole(element.id)" matTooltip="Modifier ce bénévole">
+            <button mat-button (click)="modifierBenevole(element.id)" matTooltip="Modifier ce bénévole">
                     <mat-icon aria-hidden="false" aria-label="Modifier">edit</mat-icon>
             </button>
 

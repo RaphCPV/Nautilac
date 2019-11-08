@@ -15,6 +15,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSortModule} from '@angular/material/sort';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 import { ListePosteComponent } from './liste-poste/liste-poste.component';
 import { FormBenevoleComponent } from './form-benevole/form-benevole.component';
@@ -39,6 +42,9 @@ import { FormBenevoleComponent } from './form-benevole/form-benevole.component';
     MatIconModule,
     MatPaginatorModule,
     MatTooltipModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
 
   ],
   providers: [],

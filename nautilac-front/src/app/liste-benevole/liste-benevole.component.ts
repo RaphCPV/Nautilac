@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
 
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -18,7 +19,7 @@ export class ListeBenevoleComponent implements OnInit {
 
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   benevoles: Benevole[] = [
     {
       id: 1,
@@ -66,6 +67,7 @@ export class ListeBenevoleComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   public generatePdf(benevole: Benevole) {
@@ -101,12 +103,20 @@ export class ListeBenevoleComponent implements OnInit {
     // pdfMake.createPdf(documentDefinition).download();
    }
 
+  public applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   public supprimerBenevole(benevole: Benevole) {
 
    }
 
   public ajouterBenevole() {
     this.router.navigate(['benevole/new']);
+  }
+
+  public modifierBenevole(id: number) {
+    this.router.navigate(['benevole/' + id]);
   }
 
 }
