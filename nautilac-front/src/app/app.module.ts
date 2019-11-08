@@ -15,13 +15,15 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 
 import { ListePosteComponent } from './liste-poste/liste-poste.component';
+import { FormBenevoleComponent } from './form-benevole/form-benevole.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListeBenevoleComponent,
     HeaderComponent,
-    ListePosteComponent
+    ListePosteComponent,
+    FormBenevoleComponent
   ],
   imports: [
     BrowserModule,
