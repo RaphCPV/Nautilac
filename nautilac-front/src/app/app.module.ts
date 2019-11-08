@@ -13,6 +13,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { ListePosteComponent } from './liste-poste/liste-poste.component';
 import { FormBenevoleComponent } from './form-benevole/form-benevole.component';
@@ -35,6 +37,8 @@ import { FormBenevoleComponent } from './form-benevole/form-benevole.component';
     MatCardModule,
     MatTableModule,
     MatIconModule,
+    MatPaginatorModule,
+    MatTooltipModule,
 
   ],
   providers: [],

@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { Router } from '@angular/router';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -12,6 +16,8 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class ListeBenevoleComponent implements OnInit {
 
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   benevoles: Benevole[] = [
     {
@@ -54,9 +60,12 @@ export class ListeBenevoleComponent implements OnInit {
 
   displayedColumns: string[] = ['prenom', 'nom', 'telephone', 'mail', 'bouton'];
 
-  constructor() { }
+  dataSource = new MatTableDataSource<Benevole>(this.benevoles);
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   public generatePdf(benevole: Benevole) {
@@ -91,4 +100,13 @@ export class ListeBenevoleComponent implements OnInit {
     pdfMake.createPdf(documentDefinition).open();
     // pdfMake.createPdf(documentDefinition).download();
    }
+
+  public supprimerBenevole(benevole: Benevole) {
+
+   }
+
+  public ajouterBenevole() {
+    this.router.navigate(['benevole/new']);
+  }
+
 }

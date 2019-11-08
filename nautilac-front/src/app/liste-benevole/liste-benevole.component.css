@@ -1,9 +1,23 @@
+.ajout{
+    background-color: chartreuse;
+    margin-left: 2%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
 
 .mat-table{
     width: 95%;
 }
 
+.bouton{
+    text-align: right;
+}
+
 .tableau {
     margin-left: 2%;
     margin-right: 1%;
+}
+
+.paginator{
+    margin-right: 3%;
 }
