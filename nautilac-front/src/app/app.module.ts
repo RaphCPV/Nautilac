@@ -19,7 +19,8 @@ import {
   MatDialogModule, 
   MatFormFieldModule,
   MatInputModule,
-  MatPaginatorModule 
+  MatPaginatorModule ,
+  MatSortModule
 } from '@angular/material';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 
@@ -40,6 +41,7 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatSortModule,
     MatTableModule,
     HttpClientModule,
     FormsModule,

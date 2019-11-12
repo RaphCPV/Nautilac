@@ -4,7 +4,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { PostesService } from '../service/postesService.service';
-import { MatDialog, MatTable , MatDialogConfig} from '@angular/material';
+import { MatDialog, MatDialogConfig} from '@angular/material';
+import {MatSort} from '@angular/material/sort';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -25,7 +26,7 @@ export class ListePosteComponent implements OnInit {
   displayedColumns: string[] = ['position', 'adresse', 'kilometrage', 'parcours', 'Benevole', 'actions'];
   dataSource = new MatTableDataSource<Poste>();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private postesService: PostesService,
               public dialog: MatDialog) { }
@@ -38,6 +39,7 @@ export class ListePosteComponent implements OnInit {
 
     );
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
 
@@ -61,19 +63,24 @@ export class ListePosteComponent implements OnInit {
         this.dataSource.data.forEach(data => {
           if (data.Id_postes === result.data.Id_postes) {
             this.updateRowData(result.data);
-          }
+          } 
       });
     }
   });
 }
-  updateRowData(row_obj){
+  updateRowData(RowObj) {
   /*this.dataSource.data = this.dataSource.data.filter((value,key)=>{
     if(value.id == row_obj.id){
       console.log(value.adresse);
     }
     return true;
   });*/
-  console.log('update row+' + row_obj.adresse);
+  console.log('update row+' + RowObj.adresse);
 }
+
+public applyFilter(filterValue: string) {
+  this.dataSource.filter = filterValue.trim().toLowerCase();
+}
+
 
 }
