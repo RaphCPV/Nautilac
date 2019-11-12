@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 
-import {  throwError } from 'rxjs';
+import {  throwError, Observable } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -9,9 +9,9 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class PostesService {
 
-  private REST_API_SERVER = 'https://localhost:44340/api';
 
-  
+  private REST_API_SERVER = 'https://localhost:44334/api/Postes';
+    
   constructor(private httpClient: HttpClient) { }
 
   handleError(error: HttpErrorResponse) {
@@ -28,13 +28,11 @@ export class PostesService {
   }
 
 
+  getPostes(): Observable<any> {
+    return this.httpClient.get(this.REST_API_SERVER);
+  }
 
-  public sendGetRequest(){
-    return this.httpClient.get<Poste[]>('https://localhost:44334/api/Postes')
-    .pipe(
-      retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError) // then handle the error
-    );
-  
+  UpdatePoste(poste: Poste): Observable<any> {
+    return this.httpClient.put(this.REST_API_SERVER + poste.Id_postes, JSON.stringify(poste) );
   }
 }

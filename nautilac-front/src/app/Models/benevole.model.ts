@@ -1,6 +1,6 @@
 class Benevole {
 
-    public id: number;
+    public Id_benevoles: number;
 
     public nom: string;
 

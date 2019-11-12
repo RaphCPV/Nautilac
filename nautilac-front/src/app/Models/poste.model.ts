@@ -1,8 +1,10 @@
 class Poste {
 
-    public id: number;
+    public Id_postes: number;
 
     public adresse: string;
 
     public kilometrage: number;
+
+    public parcours: string;
 }
