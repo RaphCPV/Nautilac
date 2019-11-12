@@ -14,6 +14,7 @@ import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
 
 import { 
   MatDialogModule, 
@@ -49,7 +50,8 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-    MatPaginatorModule 
+    MatPaginatorModule,
+    MatIconModule
 
   ],
   entryComponents: [
