@@ -13,6 +13,17 @@ import { ListePosteComponent } from './liste-poste/liste-poste.component';
 import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 
+import { FormsModule } from '@angular/forms';
+
+import { 
+  MatDialogModule, 
+  MatFormFieldModule,
+  MatInputModule,
+  MatPaginatorModule 
+} from '@angular/material';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+
+
 
 
 @NgModule({
@@ -20,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     ListeBenevoleComponent,
     HeaderComponent,
-    ListePosteComponent
+    ListePosteComponent,
+    DialogBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -29,8 +41,17 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatButtonModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    MatPaginatorModule 
 
+  ],
+  entryComponents: [
+    DialogBoxComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
