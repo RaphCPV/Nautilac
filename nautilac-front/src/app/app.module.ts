@@ -21,7 +21,9 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatPaginatorModule ,
-  MatSortModule
+  MatSortModule,
+  MatProgressSpinnerModule,
+  MatCardModule
 } from '@angular/material';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 
@@ -51,7 +53,9 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
     MatButtonModule,
     MatInputModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatCardModule
 
   ],
   entryComponents: [

@@ -13,15 +13,14 @@ export class DialogBoxComponent {
  
   constructor(
     public dialogRef: MatDialogRef<DialogBoxComponent>,
-    //@Optional() is used to prevent error if no data is passed
+    // @Optional() is used to prevent error if no data is passed
     @Optional() @Inject(MAT_DIALOG_DATA) data) {
-    console.log("data reçu"+ data.poste.adresse);
-    console.log("action" + data.title);
     this.poste =  data.poste;
     this.action = data.title;
   }
  
   doAction(){
+    console.log("datajhziha" + this.poste.adresse);
     this.dialogRef.close({event : this.action,
                           data: this.poste});
   }

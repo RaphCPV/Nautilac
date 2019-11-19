@@ -2,7 +2,7 @@
 <h1 mat-dialog-title><strong>{{action}}</strong></h1>
 <div mat-dialog-content>
   <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
-    <input placeholder="{{action}} Adresse" matInput [ngModel]="poste.adresse">
+    <input placeholder="{{action}} Adresse" matInput [(ngModel)]="poste.adresse">
 </mat-form-field>
 <mat-form-field>
     <input placeholder="{{action}} Kilometrage" matInput [ngModel]="poste.kilometrage">

@@ -1,70 +1,76 @@
-<button mat-raised-button class="ajout"
-(click)="ajouterPoste()">Ajouter un poste <mat-icon aria-hidden="false" aria-label="Ajouter">person_add</mat-icon></button>
+<button mat-raised-button class="ajout" (click)="ajouterPoste()">Ajouter un poste <mat-icon aria-hidden="false"
+    aria-label="Ajouter">person_add</mat-icon></button>
 
-<br/>
+<br />
 
 
-        <mat-form-field class="filtrage">
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrer">
-        </mat-form-field>
+<mat-form-field class="filtrage">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrer">
+</mat-form-field>
 
 <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <!--- Note that these columns can be defined in any order.
+  <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-      <td mat-cell *matCellDef="let poste"> {{poste.Id_postes}} </td>
-    </ng-container>
-  
-    <!-- Adresse Column -->
-    <ng-container matColumnDef="adresse">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresse </th>
-      <td mat-cell *matCellDef="let poste"> {{poste.adresse}} </td>
-    </ng-container>
-  
-    <!-- Kilometre Column -->
-    <ng-container matColumnDef="kilometrage">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>   Kilometrage </th>
-      <td mat-cell *matCellDef="let poste"> {{poste.kilometrage}} </td>
-    </ng-container>
 
-     <!-- Parcours Column -->
-     <ng-container matColumnDef="parcours">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Parcours </th>
-      <td mat-cell *matCellDef="let poste"> {{poste.parcours}} </td>
-    </ng-container>
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+    <td mat-cell *matCellDef="let poste"> {{poste.Id_postes}} </td>
+  </ng-container>
 
-     <!-- Benevole  Column -->
-     <ng-container matColumnDef="Benevole">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Benevole </th>
-      <td mat-cell *matCellDef="let poste"> <li *ngFor="let benevole of poste.Benevoles">
-                                              <span>{{ benevole.nom }}  </span>
-                                              <span>{{ benevole.prenom }}  </span>
-                                              <span>{{ benevole.jour }}  </span>
-                                            </li>
-                                            </td>
+  <!-- Adresse Column -->
+  <ng-container matColumnDef="adresse">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresse </th>
+    <td mat-cell *matCellDef="let poste"> {{poste.adresse}} </td>
+  </ng-container>
 
-    </ng-container>
-  
+  <!-- Kilometre Column -->
+  <ng-container matColumnDef="kilometrage">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Kilometrage </th>
+    <td mat-cell *matCellDef="let poste"> {{poste.kilometrage}} </td>
+  </ng-container>
+
+  <!-- Parcours Column -->
+  <ng-container matColumnDef="parcours">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Parcours </th>
+    <td mat-cell *matCellDef="let poste"> {{poste.parcours}} </td>
+  </ng-container>
+
+  <!-- Benevole  Column -->
+  <ng-container matColumnDef="Benevole">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Benevole </th>
+    <td mat-cell *matCellDef="let poste">
+      <li *ngFor="let benevole of poste.Benevoles">
+        <span>{{ benevole.nom }} </span>
+        <span>{{ benevole.prenom }} </span>
+        <span>{{ benevole.jour }} </span>
+      </li>
+    </td>
+
+  </ng-container>
+
   <!-- Edit Columln-->
   <ng-container matColumnDef="actions">
-    <mat-header-cell  *matHeaderCellDef mat-sort-header > Actions </mat-header-cell>
-    <mat-cell *matCellDef="let poste" >
-         <button mat-button (click)="openDialog('Update',poste)" ><i class="material-icons">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+    <mat-cell *matCellDef="let poste">
+      <button mat-button (click)="openDialog('Valider',poste)"><i class="material-icons">
           edit
-          </i></button>
-         <button mat-button ><i class="material-icons">
+        </i></button>
+      <button mat-button (click)="openDialog('Supprimer',poste)"><i class="material-icons">
           delete
-          </i></button>
+        </i></button>
     </mat-cell>
   </ng-container>
 
-  
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-  
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+<mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+  <mat-progress-spinner color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+</mat-card>
+<div *ngIf="dataSource.length === 0">No records found</div>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
