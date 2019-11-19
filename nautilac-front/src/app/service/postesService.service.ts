@@ -33,11 +33,14 @@ export class PostesService {
   }
 
   UpdatePoste(poste: Poste): Observable<any> {
-    console.log("le poste é"+poste.adresse);
     return this.httpClient.put(this.REST_API_SERVER + '/' + poste.Id_postes, (poste) );
   }
 
   DeletePoste(poste: Poste): Observable<any> {
      return this.httpClient.delete(this.REST_API_SERVER + '/' + poste.Id_postes);
   }
+
+  AddPoste(poste: Poste): Observable<any> {
+    return this.httpClient.post(this.REST_API_SERVER, poste);
+ }
 }

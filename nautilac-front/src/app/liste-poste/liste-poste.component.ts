@@ -50,7 +50,24 @@ export class ListePosteComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
+  ajouterPoste(action){
+    const dialogConfig = new MatDialogConfig();
 
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '250px';
+    dialogConfig.data = {
+      title: action
+    };
+    const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig);
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'Ajouter') {
+            this.AddPoste(result.data);
+          }
+    });
+  }
   openDialog(action, Poste) {
     let cpyPoste: Poste;
     cpyPoste = Poste;
@@ -84,6 +101,16 @@ export class ListePosteComponent implements OnInit {
     });
   }
   UpdatePoste(RowObj) {
+    this.postesService.UpdatePoste(RowObj).subscribe(
+      postes => {
+        this.dataSource.data = postes;
+      }
+
+    );
+    console.log('update row+' + RowObj.adresse);
+  }
+
+  AddPoste(RowObj) {
     this.postesService.UpdatePoste(RowObj).subscribe(
       postes => {
         this.dataSource.data = postes;

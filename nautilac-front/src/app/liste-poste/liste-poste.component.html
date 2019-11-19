@@ -1,4 +1,4 @@
-<button mat-raised-button class="ajout" (click)="ajouterPoste()">Ajouter un poste <mat-icon aria-hidden="false"
+<button mat-raised-button class="ajout" (click)="ajouterPoste('Ajouter')">Ajouter un poste <mat-icon aria-hidden="false"
     aria-label="Ajouter">person_add</mat-icon></button>
 
 <br />
@@ -60,6 +60,7 @@
       <button mat-button (click)="openDialog('Supprimer',poste)"><i class="material-icons">
           delete
         </i></button>
+       
     </mat-cell>
   </ng-container>
 
