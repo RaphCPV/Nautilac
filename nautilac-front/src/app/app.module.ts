@@ -26,7 +26,6 @@ import {
   MatCardModule
 } from '@angular/material';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
-import { DialogBoxAjoutComponent } from './dialog-box-ajout/dialog-box-ajout.component';
 
 
 
@@ -37,8 +36,7 @@ import { DialogBoxAjoutComponent } from './dialog-box-ajout/dialog-box-ajout.com
     ListeBenevoleComponent,
     HeaderComponent,
     ListePosteComponent,
-    DialogBoxComponent,
-    DialogBoxAjoutComponent
+    DialogBoxComponent
   ],
   imports: [
     BrowserModule,
