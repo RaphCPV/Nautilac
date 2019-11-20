@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild , ChangeDetectorRef } from '@angular/core';
 
 
 import pdfMake from 'pdfmake/build/pdfmake';
@@ -29,45 +29,18 @@ export class ListePosteComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  
+
 
   constructor(private postesService: PostesService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog, private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.postesService.getPostes().subscribe(
-      postes => {
-        this.dataSource.data = postes;
-        this.isLoading = false;
-
-        console.log(postes);
-      },
-      error => this.isLoading = false
-
-
-    );
+    this.refresh();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  ajouterPoste(action){
-    const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = '250px';
-    dialogConfig.data = {
-      title: action
-    };
-    const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig);
-
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result.event === 'Ajouter') {
-            this.AddPoste(result.data);
-          }
-    });
-  }
   openDialog(action, Poste) {
     let cpyPoste: Poste;
     cpyPoste = Poste;
@@ -85,9 +58,9 @@ export class ListePosteComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === 'Valider') {
-        this.dataSource.data.forEach(data => {
+        console.log(this.dataSource.data)
+;        this.dataSource.data.forEach(data => {
           if (data.Id_postes === result.data.Id_postes) {
-            console.log("eheheh"+result.data.adresse);
             this.UpdatePoste(result.data);
           }
         });
@@ -97,27 +70,38 @@ export class ListePosteComponent implements OnInit {
             this.DeletePoste(result.data);
           }
         });
+      } else if (result.event === 'Ajouter') {
+        this.AddPoste(result.data);
       }
     });
   }
+
   UpdatePoste(RowObj) {
     this.postesService.UpdatePoste(RowObj).subscribe(
       postes => {
         this.dataSource.data = postes;
+        this.refresh();
+
       }
 
     );
     console.log('update row+' + RowObj.adresse);
+    this.refresh();
+
   }
 
   AddPoste(RowObj) {
-    this.postesService.UpdatePoste(RowObj).subscribe(
+    this.postesService.AddPoste(RowObj).subscribe(
       postes => {
         this.dataSource.data = postes;
+        this.refresh();
+
       }
 
     );
-    console.log('update row+' + RowObj.adresse);
+    console.log('add row+' + RowObj.adresse);
+
+ 
   }
 
   public applyFilter(filterValue: string) {
@@ -125,13 +109,30 @@ export class ListePosteComponent implements OnInit {
   }
 
   DeletePoste(RowObj) {
-    /*this.dataSource.data = this.dataSource.data.filter((value,key)=>{
-      if(value.id == row_obj.id){
-        console.log(value.adresse);
+    this.postesService.DeletePoste(RowObj).subscribe(
+      postes => {
+        this.dataSource.data = postes;
+        this.refresh();
+
       }
-      return true;
-    });*/
+
+    );
     console.log('delete row+' + RowObj.adresse);
+
+  }
+
+  refresh(){
+    this.postesService.getPostes().subscribe(
+      postes => {
+        this.dataSource.data = postes;
+        this.isLoading = false;
+
+        console.log(postes);
+      },
+      error => this.isLoading = false
+
+      
+    );
   }
 
 }

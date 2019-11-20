@@ -2,13 +2,35 @@
 <h1 mat-dialog-title><strong>{{action}}</strong></h1>
 <div mat-dialog-content>
   <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
-    <input placeholder="{{action}} Adresse" matInput [(ngModel)]="poste.adresse">
-</mat-form-field>
-<mat-form-field>
-    <input placeholder="{{action}} Kilometrage" matInput [ngModel]="poste.kilometrage">
+    <input id="adresse"  name="adresse" placeholder="{{action}} Adresse" matInput [(ngModel)]="poste.adresse" #adresse  required>
 
 </mat-form-field>
-   
+
+  
+<mat-form-field>
+    <input id="kilometrage" name="kilometrage" type="number" placeholder="{{action}} Kilometrage" matInput [(ngModel)]="poste.kilometrage" required>
+</mat-form-field>
+
+<mat-form-field>
+    <input id="parcours" name="parcours" type="number" placeholder="{{action}} Parcours" matInput [(ngModel)]="poste.parcours" required>
+</mat-form-field>
+
+
+<mat-form-field>
+    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+  </mat-form-field>
+  
+  <mat-form-field >
+      <input matInput placeholder="Benevoles" aria-label="Benevoles" [matAutocomplete]="auto" [formControl]="BenevolesCtrl">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let benevoles of poste.benevoles | async" [value]="benevole.Id_benevoles">
+          <span>{{benevole.nom}}</span> |
+          <small>{{benevole.prenom}}</small>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  
+  </mat-form-field>
   <ng-template #elseTemplate>
     Etes vous sur  <b>{{poste.adresse}}</b>?
   </ng-template>

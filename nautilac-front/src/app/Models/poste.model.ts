@@ -2,9 +2,9 @@ class Poste {
 
     public Id_postes: number;
 
-    public adresse: string;
+    public adresse: string = "default";
 
-    public kilometrage: number;
+    public kilometrage: number = 0;
 
-    public parcours: string;
+    public parcours: string= "default";
 }

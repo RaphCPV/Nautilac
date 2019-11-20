@@ -13,8 +13,9 @@ import { ListePosteComponent } from './liste-poste/liste-poste.component';
 import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
+
 
 import { 
   MatDialogModule, 
@@ -23,7 +24,9 @@ import {
   MatPaginatorModule ,
   MatSortModule,
   MatProgressSpinnerModule,
-  MatCardModule
+  MatCardModule,
+  MatSelectModule ,
+  MatAutocompleteModule
 } from '@angular/material';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 
@@ -48,6 +51,7 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
     MatTableModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     MatDialogModule,
     MatFormFieldModule,
     MatButtonModule,
@@ -55,7 +59,9 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
     MatPaginatorModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatAutocompleteModule
 
   ],
   entryComponents: [

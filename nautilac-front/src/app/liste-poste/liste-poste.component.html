@@ -1,4 +1,4 @@
-<button mat-raised-button class="ajout" (click)="ajouterPoste('Ajouter')">Ajouter un poste <mat-icon aria-hidden="false"
+<button mat-raised-button class="ajout" (click)="openDialog('Ajouter', {})">Ajouter un poste <mat-icon aria-hidden="false"
     aria-label="Ajouter">person_add</mat-icon></button>
 
 <br />
@@ -61,6 +61,7 @@
           delete
         </i></button>
        
+       
     </mat-cell>
   </ng-container>
 
@@ -72,6 +73,4 @@
   <mat-progress-spinner color="primary" mode="indeterminate">
   </mat-progress-spinner>
 </mat-card>
-<div *ngIf="dataSource.length === 0">No records found</div>
-
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
