@@ -21,7 +21,7 @@ export class DialogBenevoleComponent implements OnInit {
         this.benevole = {...data};
 
       } else {
-        this.benevole = data.poste;
+        this.benevole = data.benevole;
         this.action = data.title;
       }
 

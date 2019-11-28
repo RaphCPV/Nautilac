@@ -122,7 +122,7 @@ export class ListeBenevoleComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '250px';
+    dialogConfig.width = '650px';
     dialogConfig.data = {
       benevole: benevoleInput,
       title: action

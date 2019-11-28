@@ -1,5 +1,44 @@
 <p>{{ action }} un bénévole</p>
 
+<mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+    <input id="nom"  name="nom" placeholder="Nom" matInput [(ngModel)]="benevole.nom" #nom  required>
+</mat-form-field>
 
+  
+<mat-form-field>
+    <input id="prenom" name="prenom" placeholder="Prenom" matInput [(ngModel)]="benevole.prenom" required>
+</mat-form-field>
+
+<mat-form-field>
+    <input id="responsable" name="responsable" placeholder="Responsable" matInput [(ngModel)]="benevole.responsable" required>
+</mat-form-field>
+
+<mat-form-field>
+    <input id="poste" name="poste" placeholder="Poste" matInput [(ngModel)]="benevole.poste" required>
+</mat-form-field>
+
+<mat-form-field>
+    <input id="jour" name="jour" placeholder="Jour de présence" type="date" matInput [(ngModel)]="benevole.jour" required>
+</mat-form-field>
+
+<mat-form-field>
+    <input id="telephone" name="telephone" placeholder="N° de téléphone" type="number" matInput [(ngModel)]="benevole.telephone" required>
+</mat-form-field>
+
+<mat-form-field>
+    <input id="permis" name="permis" placeholder="Permis de conduire" matInput [(ngModel)]="benevole.permis" required>
+</mat-form-field>
+
+<mat-form-field>
+    <input id="naissance" name="naissance" placeholder="Date de naissance" type="date" matInput [(ngModel)]="benevole.naissance" required>
+</mat-form-field>
+
+<mat-form-field>
+    <input id="mail" name="mail" placeholder="Adresse mail" type="email" matInput [(ngModel)]="benevole.mail" required>
+</mat-form-field>
+
+  <!-- <ng-template #elseTemplate>
+    Etes vous sur  <b>{{poste.adresse}}</b>?
+  </ng-template> -->
 
 <button (click)="closeDialog()" mat-raised-button color="warn">Annuler</button>
