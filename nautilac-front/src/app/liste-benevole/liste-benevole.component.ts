@@ -7,6 +7,8 @@ import {MatSort} from '@angular/material/sort';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { Router } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogBenevoleComponent } from '../dialog-benevole/dialog-benevole.component';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -31,7 +33,8 @@ export class ListeBenevoleComponent implements OnInit {
       telephone: 612121212,
       permis: 'wololo',
       naissance: new Date(),
-      mail: 'brouzoud@brouzmail.com'
+      mail: 'brouzoud@brouzmail.com',
+      selected: false
     },
     {
       id: 2,
@@ -40,10 +43,11 @@ export class ListeBenevoleComponent implements OnInit {
       responsable: null,
       poste: null,
       jour: 10,
-      telephone: 612121212,
+      telephone: 614568212,
       permis: 'wololo',
       naissance: new Date(),
-      mail: 'vlamure@brouzmail.com'
+      mail: 'vlamure@brouzmail.com',
+      selected: false
     },
     {
       id: 3,
@@ -52,20 +56,22 @@ export class ListeBenevoleComponent implements OnInit {
       responsable: null,
       poste: null,
       jour: 0o10,
-      telephone: 612121212,
+      telephone: 698612172,
       permis: 'wololo',
       naissance: new Date(),
-      mail: 'rch@brouzmail.com'
+      mail: 'rch@brouzmail.com',
+      selected: false
     },
   ];
 
-  displayedColumns: string[] = ['prenom', 'nom', 'telephone', 'mail', 'bouton'];
+  displayedColumns: string[] = ['checkbox', 'prenom', 'nom', 'telephone', 'mail', 'bouton'];
 
-  dataSource = new MatTableDataSource<Benevole>(this.benevoles);
+  dataSource = new MatTableDataSource<Benevole>();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.dataSource.data = this.benevoles;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -108,11 +114,22 @@ export class ListeBenevoleComponent implements OnInit {
   }
 
   public supprimerBenevole(benevole: Benevole) {
-
+    console.log(benevole.selected);
    }
 
-  public ajouterBenevole() {
-    this.router.navigate(['benevole/new']);
+  public openDialog(action, benevoleInput) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '250px';
+    dialogConfig.data = {
+      benevole: benevoleInput,
+      title: action
+    };
+
+    const dialogRef = this.dialog.open(DialogBenevoleComponent, dialogConfig);
+
   }
 
   public modifierBenevole(id: number) {

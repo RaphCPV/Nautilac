@@ -19,4 +19,6 @@ class Benevole {
     public naissance: Date;
 
     public mail: string;
+
+    public selected: boolean;
 }

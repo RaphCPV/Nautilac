@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,9 +19,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSortModule} from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { ListePosteComponent } from './liste-poste/liste-poste.component';
 import { FormBenevoleComponent } from './form-benevole/form-benevole.component';
+import { DialogBenevoleComponent } from './dialog-benevole/dialog-benevole.component';
 
 @NgModule({
   declarations: [
@@ -28,12 +32,14 @@ import { FormBenevoleComponent } from './form-benevole/form-benevole.component';
     ListeBenevoleComponent,
     HeaderComponent,
     ListePosteComponent,
-    FormBenevoleComponent
+    FormBenevoleComponent,
+    DialogBenevoleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatToolbarModule,
     MatButtonModule,
     MatDividerModule,
@@ -45,7 +51,12 @@ import { FormBenevoleComponent } from './form-benevole/form-benevole.component';
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
+    MatDialogModule,
 
+  ],
+  entryComponents: [
+    DialogBenevoleComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

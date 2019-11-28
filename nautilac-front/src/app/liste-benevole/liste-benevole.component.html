@@ -1,5 +1,5 @@
 <button mat-raised-button class="ajout"
-(click)="ajouterBenevole()">Ajouter un bénévole <mat-icon aria-hidden="false" aria-label="Ajouter">person_add</mat-icon></button>
+(click)="openDialog('Ajouter',{})">Ajouter un bénévole <mat-icon aria-hidden="false" aria-label="Ajouter">person_add</mat-icon></button>
 
 <br/>
 
@@ -11,35 +11,40 @@
     <table mat-table  matSort [dataSource]="dataSource" class="mat-elevation-z8">
 
     
+        <ng-container matColumnDef="checkbox">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': element.selected ? 'lightcoral' : 'white'}"><mat-checkbox [(ngModel)]="element.selected"></mat-checkbox></td>
+        </ng-container>
+    
         <ng-container matColumnDef="prenom">
         <th mat-header-cell mat-sort-header *matHeaderCellDef> Prenom </th>
-        <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
+        <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': element.selected ? 'lightcoral' : 'white'}"> {{element.prenom}} </td>
         </ng-container>
     
         <ng-container matColumnDef="nom">
         <th mat-header-cell mat-sort-header *matHeaderCellDef> Nom </th>
-        <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+        <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': element.selected ? 'lightcoral' : 'white'}"> {{element.nom}} </td>
         </ng-container>
     
         <ng-container matColumnDef="telephone">
         <th mat-header-cell mat-sort-header *matHeaderCellDef> N° Téléphone </th>
-        <td mat-cell *matCellDef="let element"> {{element.telephone}} </td>
+        <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': element.selected ? 'lightcoral' : 'white'}"> {{element.telephone}} </td>
         </ng-container>
     
         <ng-container matColumnDef="mail">
         <th mat-header-cell mat-sort-header *matHeaderCellDef> Mail </th>
-        <td mat-cell *matCellDef="let element"> {{element.mail}} </td>
+        <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': element.selected ? 'lightcoral' : 'white'}"> {{element.mail}} </td>
         </ng-container>
     
         <ng-container matColumnDef="bouton">
         <th mat-header-cell *matHeaderCellDef> </th>
-        <td mat-cell class="bouton" *matCellDef="let element">
+        <td mat-cell class="bouton" *matCellDef="let element" [ngStyle]="{'background-color': element.selected ? 'lightcoral' : 'white'}">
 
             <button mat-button (click)="generatePdf(element)" matTooltip="Exporter au format PDF">
                 <mat-icon aria-hidden="false" aria-label="PDF">picture_as_pdf</mat-icon>
             </button>
             
-            <button mat-button (click)="modifierBenevole(element.id)" matTooltip="Modifier ce bénévole">
+            <button mat-button (click)="openDialog('Modifier',element)" matTooltip="Modifier ce bénévole">
                     <mat-icon aria-hidden="false" aria-label="Modifier">edit</mat-icon>
             </button>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-form-benevole',
   templateUrl: './form-benevole.component.html',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormBenevoleComponent implements OnInit {
 
-  constructor() { }
+  creation = false;
+
+
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    let param;
+    this.activatedRoute.paramMap.subscribe(
+      params => {
+        param = params.get('id');
+        if (param === 'new') {
+          this.creation = true;
+        }
+      }
+    );
   }
 
 }
